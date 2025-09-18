@@ -1,42 +1,50 @@
-# Projeto: Comunicação Nativa com Flutter (MethodChannel e MVVM)
+# Projeto: Integração Nativa com Flutter (MethodChannel & MVVM)
 
-### Este projeto foi desenvolvido para a disciplina de Desenvolvimento Mobile II e tem como objetivo principal demonstrar a comunicação entre o framework Flutter e a plataforma nativa Android. O aplicativo consiste em uma tela simples com dois botões que, ao serem pressionados, invocam métodos escritos em Kotlin para exibir componentes de UI nativos do Android: um Toast e um AlertDialog
+### Este projeto foi desenvolvido como parte da disciplina de **Desenvolvimento Mobile II** e tem como finalidade apresentar a integração entre uma aplicação Flutter e recursos nativos da plataforma Android.  
+A proposta consiste em uma tela simples com dois botões que, ao serem acionados, disparam chamadas para o código nativo, resultando na exibição de componentes próprios do sistema: um **Toast** e uma **caixa de diálogo**.
 
 ![Demonstração do APP](https://raw.githubusercontent.com/veroafr/method-channel/refs/heads/main/demo.gif)
 
-## Conceitos e Tecnologias Abordadas:
+---
 
-### Os principais conceitos e tecnologias aplicados neste projeto foram:
+## Conceitos e Tecnologias Explorados
 
-- Flutter: Utilizado para a construção da interface de usuário (UI) de forma declarativa.
-- Arquitetura MVVM (Model-View-ViewModel): Empregada para organizar o código de forma limpa e escalável, separando as responsabilidades da UI (View), da lógica de apresentação (ViewModel) e dos dados (Model).
-- MethodChannel: API do Flutter utilizada como "ponte" para permitir a comunicação bidirecional entre o código Dart e o código nativo da plataforma (neste caso, Kotlin no Android).
-- Desenvolvimento Nativo Android: Escrita de código em Kotlin para interagir com as APIs do sistema Android e exibir os componentes visuais nativos.
+Os principais pontos abordados ao longo da implementação foram:
+
+- **Flutter** → utilizado para criação da interface de forma declarativa e responsiva.  
+- **Arquitetura MVVM (Model–View–ViewModel)** → garante a separação entre a camada visual, a lógica de apresentação e os dados.  
+- **MethodChannel** → recurso do Flutter que permite a comunicação bidirecional entre o aplicativo e a plataforma hospedeira.  
+- **Integração Nativa Android** → responsável por executar chamadas específicas do sistema e retornar respostas ou efeitos visuais diretamente ao usuário.  
+
+---
 
 ## Estrutura do Projeto
 
-O projeto foi organizado seguindo a arquitetura MVVM, resultando na seguinte estrutura de diretórios dentro da pasta lib:
+O código foi organizado seguindo princípios de MVVM, resultando na seguinte hierarquia:
+
 
 ```
 tarefa_methodchannel/
 ├── lib/
-│   ├── main.dart                   # Ponto de entrada da aplicação
-│   ├── models/                     # (Vazio neste projeto) Camada de dados
-│   ├── views/
-│   │   └── tela_principal.dart     # Camada de Visão (a UI da tela principal)
-│   └── viewmodels/
-│       └── comunicacao_nativa.dart # Camada de Lógica (ViewModel)
+│ ├── main.dart # Ponto inicial da aplicação Flutter
+│ ├── models/ # Camada de dados (não utilizada neste exemplo)
+│ ├── views/
+│ │ └── tela_principal.dart # Camada de apresentação (interface da tela principal)
+│ └── viewmodels/
+│ └── comunicacao_nativa.dart # Lógica de interação com a camada nativa
 │
 └── android/
-    └── .../MainActivity.kt         # Ponto de entrada do lado nativo Android
+└── .../MainActivity.kt # Configuração do canal e resposta às chamadas
 ```
 
 ## Responsabilidades dos Arquivos
 
-   - main.dart: Arquivo principal que inicializa a aplicação Flutter e define a tela inicial (TelaPrincipal).
+  
+---
 
-   - views/tela_principal.dart: Representa a camada View. É responsável exclusivamente por construir e exibir a interface do usuário (a AppBar, o fundo cinza e os dois botões estilizados). Ao interagir com os botões, ela apenas notifica o ViewModel, sem conter nenhuma lógica de comunicação.
+## Responsabilidade dos Arquivos
 
-   - viewmodels/comunicacao_nativa.dart: Representa a camada ViewModel. Contém a lógica de apresentação. É aqui que o MethodChannel é instanciado. Ele expõe os métodos (mostrarToastNativo, mostrarAlertDialogNativo) que são chamados pela View. Sua função é invocar os métodos correspondentes no lado nativo.
-
-   - MainActivity.kt: Corresponde ao código nativo Android. Ele configura um "ouvinte" (MethodCallHandler) no mesmo canal definido no Flutter. Quando uma chamada é recebida, este arquivo executa o código Kotlin correspondente para criar e exibir um Toast ou AlertDialog real no sistema Android.
+- **main.dart** → define a tela inicial do aplicativo e configura o ponto de entrada.  
+- **views/tela_principal.dart** → camada **View**, responsável apenas por renderizar a interface (AppBar e botões) e repassar as ações ao ViewModel.  
+- **viewmodels/comunicacao_nativa.dart** → camada **ViewModel**, onde o canal de comunicação é estabelecido. Expõe métodos que podem ser chamados pela interface.  
+- **MainActivity.kt** → lado nativo que escuta as chamadas do canal e executa ações do sistema, exibindo elementos visuais ao usuário.  
