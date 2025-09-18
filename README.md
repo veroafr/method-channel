@@ -1,4 +1,4 @@
-# Projeto: Integração Nativa com Flutter (MethodChannel & MVVM)
+# Integração Nativa com Flutter (MethodChannel & MVVM) - Atividade 2 - Curso TADS - Materia: Programacao Mobile 2.
 
 ### Este projeto foi desenvolvido como parte da disciplina de **Desenvolvimento Mobile II** e tem como finalidade apresentar a integração entre uma aplicação Flutter e recursos nativos da plataforma Android.  
 A proposta consiste em uma tela simples com dois botões que, ao serem acionados, disparam chamadas para o código nativo, resultando na exibição de componentes próprios do sistema: um **Toast** e uma **caixa de diálogo**.
