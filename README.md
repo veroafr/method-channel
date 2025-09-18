@@ -36,9 +36,6 @@ tarefa_methodchannel/
 └── android/
 └── .../MainActivity.kt # Configuração do canal e resposta às chamadas
 ```
-
-## Responsabilidades dos Arquivos
-
   
 ---
 
