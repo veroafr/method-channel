@@ -2,7 +2,7 @@
 
 ### Este projeto foi desenvolvido para a disciplina de Desenvolvimento Mobile II e tem como objetivo principal demonstrar a comunicação entre o framework Flutter e a plataforma nativa Android. O aplicativo consiste em uma tela simples com dois botões que, ao serem pressionados, invocam métodos escritos em Kotlin para exibir componentes de UI nativos do Android: um Toast e um AlertDialog
 
-<video src="demo.mp4" controls loop muted playsinline width="520"></video>
+![Demonstração do APP](https://raw.githubusercontent.com/veroafr/method-channel/main/assets/demo-comunicacao_nativa.gif)
 
 ## Conceitos e Tecnologias Abordadas:
 
